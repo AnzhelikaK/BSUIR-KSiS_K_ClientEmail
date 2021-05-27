@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsuir.controller.MainController">
+   <stylesheets>
+      <URL value="@/main.css" />
+   </stylesheets>
+   <TabPane prefHeight="500.0" prefWidth="886.0" tabClosingPolicy="UNAVAILABLE">
+     <tabs>
+       <Tab text="Receive Email">
+         <content>
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="886.0">
+                  <children>
+
+                                       <MasterDetailPane fx:id="masterDetailPane" dividerPosition="0.7" layoutY="111.0" prefHeight="358.0" prefWidth="886.0">
+                        <masterNode>
+                           <TableView fx:id="masterTable" layoutX="8.0" layoutY="34.0" prefHeight="356.0" prefWidth="734.0">
+                              <columns>
+                                 <TableColumn fx:id="dateColumn" editable="false" prefWidth="150.0" text="Date" />
+                                 <TableColumn fx:id="fromColumn" editable="false" prefWidth="123.0" text="From" />
+                                 <TableColumn fx:id="subjectColumn" editable="false" prefWidth="161.0" text="Subject" />
+                              </columns>
+                           </TableView>
+                        </masterNode>
+                        <detailNode>
+                           <TextArea fx:id="detailNode" editable="false" prefHeight="356.0" prefWidth="441.0" />
+                        </detailNode>
+
+                                       </MasterDetailPane>
+                     <TextField fx:id="hostField" layoutY="3.0" prefHeight="25.0" prefWidth="256.0" promptText="host" />
+                     <TextField fx:id="loginField" layoutY="38.0" prefHeight="25.0" prefWidth="256.0" promptText="login" />
+                     <PasswordField fx:id="passwordField" layoutY="70.0" prefHeight="25.0" prefWidth="256.0" promptText="password" />
+                     <Button layoutX="626.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleClickReceiveEmails" prefHeight="64.0" prefWidth="139.0" text="Receive Emails" />
+                  </children>
+               </AnchorPane>
+         </content>
+       </Tab>
+       <Tab text="Send Email">
+         <content>
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <TextField fx:id="sendHostField" layoutX="26.0" layoutY="14.0" promptText="host" />
+                     <TextField fx:id="sendLoginField" layoutX="225.0" layoutY="14.0" promptText="from email" />
+                     <PasswordField fx:id="sendPasswordField" layoutX="427.0" layoutY="14.0" promptText="password" />
+                     <TextField fx:id="toField" layoutX="26.0" layoutY="106.0" promptText="to email" />
+                     <TextField fx:id="sendSubjectField" layoutX="225.0" layoutY="106.0" promptText="subject" />
+                     <TextArea fx:id="sendText" layoutX="26.0" layoutY="144.0" prefHeight="304.0" prefWidth="740.0" promptText="text" />
+                     <Button layoutX="614.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleClickSendEmail" prefHeight="116.0" prefWidth="152.0" text="Send" />
+                  </children>
+               </AnchorPane>
+         </content>
+       </Tab>
+     </tabs>
+   </TabPane>
+
+</AnchorPane>

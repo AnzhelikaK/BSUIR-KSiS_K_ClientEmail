@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Reference: https://openjfx.io/openjfx-docs -->
+    <groupId>org.example</groupId>
+    <artifactId>java_fx_1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>11
+        </maven.compiler.release> <!-- Reference: https://stackoverflow.com/questions/59049980/maven-compiler-release-as-an-replacement-for-source-and-target -->
+        <maven.compiler.plugin.version>3.8.1
+        </maven.compiler.plugin.version> <!-- Reference: https://stackoverflow.com/questions/59049980/maven-compiler-release-as-an-replacement-for-source-and-target -->
+
+        <javafx.version>16</javafx.version>
+        <javafx.maven.plugin.version>0.0.6</javafx.maven.plugin.version>
+
+        <javafx.weaver.spring.boot.starter.version>1.3.0</javafx.weaver.spring.boot.starter.version>
+        <spring-boot-dependencies.version>2.4.5</spring-boot-dependencies.version>
+        <lombok.version>1.18.20</lombok.version>
+        <controlsfx.version>11.1.0</controlsfx.version>
+
+        <spring-integration-mail.version>5.4.6</spring-integration-mail.version>
+        <mail.version>1.4.7</mail.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- Reference: https://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>${controlsfx.version}</version>
+        </dependency>
+
+        <!-- Reference: https://www.vojtechruzicka.com/javafx-spring-boot/ -->
+        <dependency>
+            <groupId>net.rgielen</groupId>
+            <artifactId>javafx-weaver-spring-boot-starter</artifactId>
+            <version>${javafx.weaver.spring.boot.starter.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Mails -->
+        <!-- https://docs.spring.io/spring-integration/reference/html/mail.html -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mail</artifactId>
+            <version>${spring-integration-mail.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <!-- Reference: https://www.youtube.com/watch?v=3lNQhbg1y4Y -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.maven.plugin.version}</version>
+                <configuration>
+                    <stripDebug>true</stripDebug>
+                    <compress>2</compress>
+                    <noHeaderFiles>true</noHeaderFiles>
+                    <noManPages>true</noManPages>
+                    <launcher>java_fx_launcher</launcher>
+                    <jlinkImageName>java_fx_image</jlinkImageName>
+                    <jlinkZipName>java_fx_zip</jlinkZipName>
+                    <mainClass>com.bsuir.FxApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
