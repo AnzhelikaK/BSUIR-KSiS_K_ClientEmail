@@ -1,0 +1,8 @@
+.table-row-cell {
+    -fx-cell-size: 20px;
+}
+.root {
+    -fx-font-size: 14px;
+    -fx-font-family: sans-serif;
+    -fx-background-color: rgba(85, 151, 12, 0.57);
+}
